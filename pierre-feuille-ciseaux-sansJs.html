@@ -79,7 +79,7 @@ body {
 
      function Initialisation() {
         document.getElementById("rejouer").style.display = "none"; //permet de caché le bouton rejouer
-        document.getElementById("titre").inneHTML = "chifoumi"; //
+        document.getElementById("titre").innerHTML = "chifoumi"; //
         document.getElementById("resultat-gauche").innerHTML = "&nbsp;";
         document.getElementById("resultat-droite").innerHTML = "&nbsp;";
         document.getElementById('image-gauche').style.pointerEvents = 'auto';
@@ -110,12 +110,10 @@ body {
 
    function CheckWin() {
 
-       if (joueurDroite === joueurGauche) {
-        document.getElementById("titre").inneHTML = "Trop Nul";
+       if (joueurDroite("choix") === joueurGauche("choix")) {
+        document.getElementById("titre").innerHTML = "Trop Nul";
         document.getElementById("droite").style.backgroundColor = document.getElementById("gauche").style.backgroundColor="red";
     }
-
-
     }
 </script>
 </body>
