@@ -95,26 +95,31 @@ body {
         document.getElementById("resultat-gauche").innerHTML = selection;
         document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
         document.getElementById('image-gauche').style.pointerEvents = 'none';
-        //CheckWin()
+        CheckWin();
     }
     function joueurDroite() {
         document.getElementById("droite").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
-        var selection = listePFC[choix];
-        document.getElementById("resultat-droite").innerHTML = selection;
-        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        var selection1 = listePFC[choix];
+        document.getElementById("resultat-droite").innerHTML = selection1;
+        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection1 + ".jpg')";
         document.getElementById('image-droite').style.pointerEvents = 'none';
-        //CheckWin()
+        CheckWin();
 
     }
 
-    /*function CheckWin() {
+   function CheckWin() {
 
-        if ('resultat-droite' == 'resultat-gauche') {
+        if (joueurGauche(selection) && joueurDroite(selection1)) {
 
+
+            if (joueurDroite(selection1) === joueurGauche(selection)) {
+                document.getElementById("titre").inneHTML = "Trop Nul";
+                document.getElementById("droite").style.backgroundColor = document.getElementById("gauche").style.backgroundColor="red";
+            }
         }
 
-    }*/
+    }
 </script>
 </body>
 </html>
