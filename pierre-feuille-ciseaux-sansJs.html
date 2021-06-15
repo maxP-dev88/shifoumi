@@ -79,19 +79,21 @@ body {
 
     var listePFC = ["pierre", "feuille", "ciseau"];
      function Initialisation() {
-         document.getElementById("rejouer").style.display = "none";
-         document.getElementById("titre").inneHTML = "chifoumi";
-         document.getElementById("resultat-gauche").innerHTML = "&nbsp;";
-         document.getElementById("resultat-droite").innerHTML = "&nbsp;";
+        document.getElementById("rejouer").style.display = "none"; //permet de caché le bouton rejouer
+        document.getElementById("titre").inneHTML = "chifoumi"; //
+        document.getElementById("resultat-gauche").innerHTML = "&nbsp;";
+        document.getElementById("resultat-droite").innerHTML = "&nbsp;";
+        document.getElementById('image-gauche').style.pointerEvents = 'auto';
+        document.getElementById('image-droite').style.pointerEvents = 'auto';
     }
 
     function joueurGauche() {
-         document.getElementById("gauche").style.backgroundColor = "black";
-         var choix = Math.floor(Math.random() * 3 );
-         var selection = listePFC[choix];
-         listePFC = document.getElementById("resultat-gauche").innerHTML = selection;
-         document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
-
+        document.getElementById("gauche").style.backgroundColor = "black";
+        var choix = Math.floor(Math.random() * 3 );
+        var selection = listePFC[choix];
+        listePFC = document.getElementById("resultat-gauche").innerHTML = selection;
+        document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        document.getElementById('image-gauche').style.pointerEvents = 'none';
     }
     function joueurDroite() {
         document.getElementById("droite").style.backgroundColor = "black";
@@ -99,6 +101,7 @@ body {
         var selection = listePFC[choix];
         listePFC = document.getElementById("resultat-droite").innerHTML = selection;
         document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        document.getElementById('image-droite').style.pointerEvents = 'none';
         
 
     }
