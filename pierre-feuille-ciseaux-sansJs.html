@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Pierre feuille ciseau</title>
+<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<style>
+body {
+	margin:0;
+	padding: 0;
+	}
+#titre {
+	position:fixed;
+	left:0px;
+	top:0px;
+	text-align:center;
+	width:100%;
+	display:block;
+	font-family: 'Lobster', cursive;
+	font-size:80px;
+	padding-top:20px;
+	color:white;
+	}
+#gauche, #droite {
+	float:left;
+	width:50%;
+	background-color:#C3C2C2;
+	min-height: 100vh;
+	text-align:center;
+	}
+#resultat-gauche, #resultat-droite {
+	text-align:center;
+	margin-top:200px;
+	font-family: 'Lobster', cursive;
+	font-size:70px;
+	color:white;
+	text-transform: capitalize;
+	}
+#image-gauche, #image-droite {
+	text-align:center;
+	height:500px;
+	background-image:url(images-pfc/depart.jpg);
+	background-position:center;
+	border-radius:20px;
+	background-repeat:no-repeat;
+	}
+#rejouer {
+	position:fixed;
+	left:0px;
+	bottom:0px;
+	text-align:center;
+	width:100%;
+	display:block;
+	}
+.bouton {
+	margin-bottom:20px;
+	padding:20px;
+	font-family: 'Lobster', cursive;
+	font-size:80px;
+	background-color:#C3C2C2;
+	border-radius:20px;
+	border:none;
+	}
+</style>
+</head>
+
+<body onload="Initialisation();">
+<div id="titre">Chifoumi</div>
+<div id="gauche">
+	<div id="resultat-gauche">Gagné</div>
+    <div id="image-gauche" onclick="joueurGauche();"></div>
+</div>
+<div id="droite">
+	<div id="resultat-droite">Perdu</div>
+    <div id="image-droite" onclick="joueurDroite();"></div>
+</div>
+<div id="rejouer"> <button type="button" class="bouton" onclick="Initialisation();">Rejouer</button> </div>
+<script>
+
+    var listePFC = ["pierre", "feuille", "ciseau"];
+     function Initialisation() {
+         document.getElementById("rejouer").style.display = "none";
+         document.getElementById("titre").inneHTML = "chifoumi";
+         document.getElementById("resultat-gauche").innerHTML = "&nbsp;";
+         document.getElementById("resultat-droite").innerHTML = "&nbsp;";
+    }
+
+    function joueurGauche() {
+         document.getElementById("gauche").style.backgroundColor = "black";
+         var choix = Math.floor(Math.random() * 3 );
+         var selection = listePFC[choix];
+         listePFC = document.getElementById("resultat-gauche").innerHTML = selection;
+         document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+
+    }
+    function joueurDroite() {
+        document.getElementById("droite").style.backgroundColor = "black";
+        var choix = Math.floor(Math.random() * 3 );
+        var selection = listePFC[choix];
+        listePFC = document.getElementById("resultat-droite").innerHTML = selection;
+        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        
+
+    }
+</script>
+</body>
+</html>
