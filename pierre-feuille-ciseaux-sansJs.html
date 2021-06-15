@@ -92,21 +92,29 @@ body {
         document.getElementById("gauche").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
         var selection = listePFC[choix];
-        listePFC[0] = document.getElementById("resultat-gauche").innerHTML = selection;
+        document.getElementById("resultat-gauche").innerHTML = selection;
         document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
         document.getElementById('image-gauche').style.pointerEvents = 'none';
-
+        //CheckWin()
     }
     function joueurDroite() {
         document.getElementById("droite").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
         var selection = listePFC[choix];
-        listePFC[1] = document.getElementById("resultat-droite").innerHTML = selection;
+        document.getElementById("resultat-droite").innerHTML = selection;
         document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
         document.getElementById('image-droite').style.pointerEvents = 'none';
-        
+        //CheckWin()
 
     }
+
+    /*function CheckWin() {
+
+        if ('resultat-droite' == 'resultat-gauche') {
+
+        }
+
+    }*/
 </script>
 </body>
 </html>
