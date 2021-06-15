@@ -100,9 +100,9 @@ body {
     function joueurDroite() {
         document.getElementById("droite").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
-        var selection1 = listePFC[choix];
-        document.getElementById("resultat-droite").innerHTML = selection1;
-        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection1 + ".jpg')";
+        var selection = listePFC[choix];
+        document.getElementById("resultat-droite").innerHTML = selection;
+        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
         document.getElementById('image-droite').style.pointerEvents = 'none';
         CheckWin();
 
@@ -110,14 +110,11 @@ body {
 
    function CheckWin() {
 
-        if (joueurGauche(selection) && joueurDroite(selection1)) {
+       if (joueurDroite === joueurGauche) {
+        document.getElementById("titre").inneHTML = "Trop Nul";
+        document.getElementById("droite").style.backgroundColor = document.getElementById("gauche").style.backgroundColor="red";
+    }
 
-
-            if (joueurDroite(selection1) === joueurGauche(selection)) {
-                document.getElementById("titre").inneHTML = "Trop Nul";
-                document.getElementById("droite").style.backgroundColor = document.getElementById("gauche").style.backgroundColor="red";
-            }
-        }
 
     }
 </script>
