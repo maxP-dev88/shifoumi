@@ -82,39 +82,89 @@ body {
         document.getElementById("titre").innerHTML = "chifoumi"; //
         document.getElementById("resultat-gauche").innerHTML = "&nbsp;";
         document.getElementById("resultat-droite").innerHTML = "&nbsp;";
-        document.getElementById('image-gauche').style.pointerEvents = 'auto';
-        document.getElementById('image-droite').style.pointerEvents = 'auto';
+        document.getElementById("gauche").style.backgroundColor = "#C3C2C2";
+        document.getElementById("droite").style.backgroundColor = "#C3C2C2";
+        document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/depart.jpg')";
+        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/depart.jpg')";
+        document.getElementById("image-gauche").style.pointerEvents = 'auto';
+        document.getElementById("image-droite").style.pointerEvents = 'auto';
         listePFC = ["pierre", "feuille", "ciseau"];
+        var resultatGauche = "rien";
+        var resultatDroite = "rien";
 
     }
 
     function joueurGauche() {
         document.getElementById("gauche").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
-        var selection = listePFC[choix];
-        document.getElementById("resultat-gauche").innerHTML = selection;
-        document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        resultatGauche = listePFC[choix];
+        document.getElementById("resultat-gauche").innerHTML = resultatGauche;
+        document.getElementById("image-gauche").style.backgroundImage = "url('images-pfc/" + resultatGauche + ".jpg')";
         document.getElementById('image-gauche').style.pointerEvents = 'none';
-        CheckWin();
+        checkWin();
     }
     function joueurDroite() {
         document.getElementById("droite").style.backgroundColor = "black";
         var choix = Math.floor(Math.random() * 3 );
-        var selection = listePFC[choix];
-        document.getElementById("resultat-droite").innerHTML = selection;
-        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + selection + ".jpg')";
+        resultatDroite = listePFC[choix];
+        document.getElementById("resultat-droite").innerHTML = resultatDroite;
+        document.getElementById("image-droite").style.backgroundImage = "url('images-pfc/" + resultatDroite + ".jpg')";
         document.getElementById('image-droite').style.pointerEvents = 'none';
-        CheckWin();
-
+        checkWin();
     }
 
-   function CheckWin() {
 
-       if (joueurDroite("choix") === joueurGauche("choix")) {
-        document.getElementById("titre").innerHTML = "Trop Nul";
-        document.getElementById("droite").style.backgroundColor = document.getElementById("gauche").style.backgroundColor="red";
-    }
-    }
+   function checkWin() {
+        if (resultatGauche !== "rien" && resultatDroite !== "rien") {
+
+            if (resultatGauche === resultatDroite) {
+                document.getElementById("titre").innerHTML = "Egalité trop nul !!!";
+                document.getElementById("droite").style.backgroundColor = "red";
+                document.getElementById("gauche").style.backgroundColor = "red";
+            }
+
+            if (resultatDroite === "ciseau" && resultatGauche === "pierre") {
+                document.getElementById("titre").innerHTML = "la pierre défonce le ciseau !";
+                document.getElementById("droite").style.backgroundColor = "red";
+                document.getElementById("gauche").style.backgroundColor = "green";
+            }
+
+            if (resultatDroite === "feuille" && resultatGauche === "ciseau") {
+                document.getElementById("titre").innerHTML = "Le ciseau découpe la feuille !";
+                document.getElementById("droite").style.backgroundColor = "red";
+                document.getElementById("gauche").style.backgroundColor = "green";
+            }
+
+            if (resultatDroite === "pierre" && resultatGauche === "feuille") {
+                document.getElementById("titre").innerHTML = "la feuille recouvre la pierre cheh !";
+                document.getElementById("droite").style.backgroundColor = "red";
+                document.getElementById("gauche").style.backgroundColor = "green";
+            }
+
+            if (resultatGauche === "ciseau" && resultatDroite === "pierre") {
+                document.getElementById("titre").innerHTML = "la pierre défonce le ciseau !";
+                document.getElementById("droite").style.backgroundColor = "green";
+                document.getElementById("gauche").style.backgroundColor = "red";
+            }
+
+            if (resultatGauche === "pierre" && resultatDroite === "feuille") {
+                document.getElementById("titre").innerHTML = "la feuille recouvre la pierre cheh !";
+                document.getElementById("droite").style.backgroundColor = "green";
+                document.getElementById("gauche").style.backgroundColor = "red";
+            }
+
+            if (resultatGauche === "feuille" && resultatDroite === "ciseau") {
+                document.getElementById("titre").innerHTML = "Le ciseau découpe la feuille !";
+                document.getElementById("droite").style.backgroundColor = "green";
+                document.getElementById("gauche").style.backgroundColor = "red";
+            }
+
+            document.getElementById("rejouer").style.display = "initial";
+        }
+
+   }
+
+
 </script>
 </body>
 </html>
